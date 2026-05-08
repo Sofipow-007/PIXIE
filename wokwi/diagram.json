@@ -25,13 +25,6 @@
       "top": 179,
       "left": 211.2,
       "attrs": { "color": "red", "xray": "" }
-    },
-    {
-      "type": "wokwi-pushbutton",
-      "id": "btn2",
-      "top": 121.4,
-      "left": -67.2,
-      "attrs": { "color": "green", "xray": "1" }
     }
   ],
   "connections": [
