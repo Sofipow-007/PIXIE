@@ -1,0 +1,94 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  /* OLED dark palette */
+  --color-background: #06090f;
+  --color-foreground: #c8d3e0;
+
+  --color-card: #0b1220;
+  --color-card-foreground: #c8d3e0;
+
+  --color-popover: #0b1220;
+  --color-popover-foreground: #c8d3e0;
+
+  /* Green = active / online / enabled */
+  --color-primary: #00d084;
+  --color-primary-foreground: #06090f;
+
+  /* Cyan = technical data / secondary accent */
+  --color-secondary: #38bdf8;
+  --color-secondary-foreground: #06090f;
+
+  --color-muted: #0f1c2e;
+  --color-muted-foreground: #4a5568;
+
+  --color-accent: #0f1c2e;
+  --color-accent-foreground: #c8d3e0;
+
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #fafafa;
+
+  --color-border: #152030;
+  --color-input: #0b1220;
+  --color-ring: #00d084;
+
+  /* Sharp corners — technical aesthetic */
+  --radius-sm: 0.125rem;
+  --radius-md: 0.25rem;
+  --radius-lg: 0.375rem;
+  --radius-xl: 0.5rem;
+  --radius-2xl: 0.75rem;
+
+  --font-sans: 'Fira Sans', system-ui, sans-serif;
+  --font-mono: 'Fira Code', 'Cascadia Code', monospace;
+}
+
+* {
+  border-color: var(--color-border);
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Monospace inputs & selects inherit font */
+input, select, textarea {
+  font-family: var(--font-sans);
+}
+
+/* Subtle scanline overlay on the whole app */
+#root::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Range input */
+input[type="range"] {
+  accent-color: var(--color-primary);
+}
+
+/* Checkbox */
+input[type="checkbox"] {
+  accent-color: var(--color-primary);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-muted-foreground); }

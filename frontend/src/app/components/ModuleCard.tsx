@@ -17,35 +17,51 @@ export function ModuleCard({ icon, title, description, enabled, onToggle, childr
   const [open, setOpen] = useState(false);
 
   return (
-    <div className={cn('rounded-2xl border bg-card transition-all', enabled ? 'border-primary/40' : 'border-border')}>
-      <div className="flex items-center gap-4 p-5">
-        <div className={cn('w-10 h-10 rounded-xl flex items-center justify-center text-lg shrink-0', enabled ? 'bg-primary/20 text-primary' : 'bg-muted text-muted-foreground')}>
+    <div className={cn(
+      'border bg-card transition-all',
+      enabled ? 'border-primary/20' : 'border-border'
+    )}>
+      <div className="flex items-center gap-3 p-4">
+        <div className={cn(
+          'w-8 h-8 flex items-center justify-center shrink-0 transition-colors text-sm',
+          enabled ? 'text-primary' : 'text-muted-foreground'
+        )}>
           {icon}
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2">
-            <span className="font-semibold text-sm">{title}</span>
-            {badge && <span className="text-xs px-2 py-0.5 rounded-full bg-muted text-muted-foreground">{badge}</span>}
+            <span className="font-medium text-sm text-foreground">{title}</span>
+            {badge && (
+              <span className="text-[9px] px-1.5 py-0.5 border border-border text-muted-foreground font-mono tracking-wider">
+                {badge}
+              </span>
+            )}
           </div>
-          <p className="text-xs text-muted-foreground mt-0.5 truncate">{description}</p>
+          <p className="text-[11px] text-muted-foreground mt-0.5 truncate">{description}</p>
         </div>
         <div className="flex items-center gap-2 shrink-0">
           {enabled && children && (
-            <button onClick={() => setOpen(o => !o)} className="text-muted-foreground hover:text-foreground transition-colors">
-              {open ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+            <button
+              onClick={() => setOpen(o => !o)}
+              className="text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+            >
+              {open ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
             </button>
           )}
           <SwitchPrimitive.Root
             checked={enabled}
             onCheckedChange={onToggle}
-            className={cn('w-10 h-6 rounded-full relative transition-colors outline-none cursor-pointer', enabled ? 'bg-primary' : 'bg-muted')}
+            className={cn(
+              'w-9 h-5 rounded-full relative transition-colors outline-none cursor-pointer',
+              enabled ? 'bg-primary' : 'bg-muted'
+            )}
           >
-            <SwitchPrimitive.Thumb className="block w-4 h-4 bg-white rounded-full shadow transition-transform translate-x-1 data-[state=checked]:translate-x-5" />
+            <SwitchPrimitive.Thumb className="block w-3.5 h-3.5 bg-white rounded-full shadow transition-transform translate-x-0.5 data-[state=checked]:translate-x-[18px]" />
           </SwitchPrimitive.Root>
         </div>
       </div>
       {enabled && open && children && (
-        <div className="border-t border-border px-5 pb-5 pt-4">
+        <div className="border-t border-border px-4 pb-4 pt-3">
           {children}
         </div>
       )}

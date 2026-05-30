@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { Toaster } from 'sonner';
 import { usePixieStore } from './store';
 import { Sidebar } from './components/Sidebar';
-import { HomeView } from './views/HomeView';
-import { ModulesView } from './views/ModulesView';
-import { GlobalSettingsView } from './views/GlobalSettingsView';
-import { DesktopModeView } from './views/DesktopModeView';
-import { PowerView } from './views/PowerView';
+import { HomeView } from './components/views/HomeView';
+import { ModulesView } from './components/views/ModulesView';
+import { GlobalSettingsView } from './components/views/GlobalSettingsView';
+import { DesktopModeView } from './components/views/DesktopModeView';
+import { PowerView } from './components/views/PowerView';
 import { DesktopWidget } from './components/DesktopWidget';
 
 export type ViewId = 'home' | 'modules' | 'settings' | 'desktop' | 'power';
@@ -29,7 +29,7 @@ export default function App() {
     <div className="flex h-screen bg-background text-foreground overflow-hidden">
       <Toaster richColors position="top-right" />
       <Sidebar activeView={activeView} onNavigate={setActiveView} deviceName={pixie.store.global.deviceName} online={pixie.store.device.online} />
-      <main className="flex-1 overflow-y-auto p-6 md:p-8">
+      <main className="flex-1 overflow-y-auto p-5 md:p-8 pb-20 md:pb-8">
         {renderView()}
       </main>
       {pixie.store.desktopModeActive && (
