@@ -18,5 +18,12 @@ export default defineConfig({
   },
 
   // File types to support raw imports. Never add .css, .tsx, or .ts files to this.
-  assetsInclude: ['**/*.svg', '**/*.csv'],
+  assetsInclude: ['**/*.svg', '**/*.csv', '**/*.gif'],
+
+  server: {
+    fs: {
+      // Allow importing GIFs from the firmware folder (sibling of frontend/)
+      allow: ['..'],
+    },
+  },
 })

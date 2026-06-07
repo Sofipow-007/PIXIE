@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
+/* ─── PIXIE Design Tokens ─────────────────────────────────────────────────── */
+/* Palette: near-black OLED surface + cyan-teal primary + amber accent         */
+/* Aesthetic: dense, precise, backlit acrylic — the device itself at night     */
+
+@theme {
+  /* Brand */
+  --color-primary:            oklch(0.73 0.155 192);   /* #00b8c7 — cyan-teal  */
+  --color-primary-foreground: oklch(0.07 0.000   0);   /* dark text on primary */
+  --color-accent:             oklch(0.82 0.120  75);   /* #e0a145 — warm amber */
+  --color-accent-foreground:  oklch(0.07 0.000   0);
+
+  /* Surfaces */
+  --color-background:         oklch(0.07 0.000   0);   /* #0d0d0d */
+  --color-card:               oklch(0.12 0.008 210);   /* #161b1f */
+  --color-card-foreground:    oklch(0.96 0.008 200);
+  --color-popover:            oklch(0.12 0.008 210);
+  --color-popover-foreground: oklch(0.96 0.008 200);
+  --color-secondary:          oklch(0.16 0.008 210);
+  --color-secondary-foreground: oklch(0.96 0.008 200);
+  --color-muted:              oklch(0.16 0.008 210);
+  --color-input:              oklch(0.14 0.008 210);
+  --color-input-background:   oklch(0.14 0.008 210);
+
+  /* Text */
+  --color-foreground:         oklch(0.96 0.008 200);   /* near-white */
+  --color-muted-foreground:   oklch(0.50 0.018 210);   /* secondary text */
+
+  /* Borders & ring */
+  --color-border:             oklch(0.22 0.018 210);
+  --color-ring:               oklch(0.73 0.155 192);
+
+  /* Semantic */
+  --color-destructive:            oklch(0.62 0.210  25);
+  --color-destructive-foreground: oklch(0.96 0.008 200);
+
+  /* Typography */
+  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-mono: "Space Mono", "Courier New", monospace;
+
+  /* Radius */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 0.875rem;
+  --radius-xl: 1.125rem;
+  --radius-2xl: 1.5rem;
+}
+
+/* ─── Base ────────────────────────────────────────────────────────────────── */
+
+*, *::before, *::after {
+  border-color: oklch(0.22 0.018 210);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: oklch(0.07 0.000 0);
+  color: oklch(0.96 0.008 200);
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Scrollbar ───────────────────────────────────────────────────────────── */
+
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: oklch(0.73 0.155 192 / 0.25);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.73 0.155 192 / 0.45);
+}
+
+/* ─── Lucite glow utilities ──────────────────────────────────────────────── */
+/* "Backlit acrylic" — a thin colored outline with a soft inner luminance     */
+
+.glow-sm {
+  box-shadow:
+    0 0 0 1px oklch(0.73 0.155 192 / 0.18),
+    0 0 12px oklch(0.73 0.155 192 / 0.08);
+}
+
+.glow-md {
+  box-shadow:
+    0 0 0 1px oklch(0.73 0.155 192 / 0.28),
+    0 0 24px oklch(0.73 0.155 192 / 0.12),
+    inset 0 1px 0 oklch(0.73 0.155 192 / 0.06);
+}
+
+.glow-accent {
+  box-shadow:
+    0 0 0 1px oklch(0.82 0.120 75 / 0.25),
+    0 0 18px oklch(0.82 0.120 75 / 0.10);
+}
+
+/* ─── Focus ring ──────────────────────────────────────────────────────────── */
+
+:focus-visible {
+  outline: 2px solid oklch(0.73 0.155 192);
+  outline-offset: 2px;
+}
+
+/* ─── Reduced motion ─────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
