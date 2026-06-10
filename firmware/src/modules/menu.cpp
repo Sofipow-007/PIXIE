@@ -8,7 +8,6 @@
 #include "functions/settings.h"
 
 #include <Arduino.h>
-#include "functions/settings.h"
 
 enum AppState
 {
