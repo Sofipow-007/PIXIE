@@ -1,3 +1,4 @@
+
 {
   "version": 1,
   "author": "Sofia Power",
@@ -49,7 +50,13 @@
       "rotate": 90,
       "attrs": { "color": "orange" }
     },
-    { "type": "wokwi-buzzer", "id": "bz1", "top": 340, "left": 295, "attrs": { "volume": "0.1" } }
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": 340,
+      "left": 295,
+      "attrs": { "volume": "0.1" }
+    }
   ],
   "connections": [
     [ "esp:TX", "$serialMonitor:RX", "", [] ],
@@ -62,16 +69,22 @@
     [ "esp:3V3", "bb1:bp.12", "red", [ "h0" ] ],
     [ "esp:21", "oled1:SDA", "blue", [ "h19.2", "v-19.2", "h153.53" ] ],
     [ "esp:22", "oled1:SCL", "gold", [ "h0" ] ],
-    [ "btnUp:1.l", "bb1:bn.36", "black", [ "h0" ] ],
-    [ "esp:32", "btnUp:2.r", "green", [ "h-28.65", "v155", "h120", "v36" ] ],
-    [ "btnDown:1.l", "bb1:bn.40", "black", [ "h0" ] ],
-    [ "esp:33", "btnDown:2.r", "lime", [ "h-38", "v275", "h115", "v38" ] ],
-    [ "btnLeft:1.l", "bb1:bn.38", "black", [ "h0" ] ],
-    [ "esp:34", "btnLeft:2.r", "yellow", [ "h-45", "v215", "h55", "v54" ] ],
-    [ "btnRight:1.l", "bb1:bn.42", "black", [ "h0" ] ],
-    [ "esp:35", "btnRight:2.r", "orange", [ "h-55", "v215", "h215", "v52" ] ],
-    [ "bz1:+", "esp:25", "purple", [ "h-150", "v-120" ] ],
-    [ "bz1:-", "bb1:bn.44", "black", [ "h0" ] ],
+
+    [ "btnUp:1.r",    "esp:GND.2", "black",  [] ],
+    [ "btnUp:2.r",    "esp:32",    "green",  [] ],
+
+    [ "btnDown:1.r",  "esp:GND.2", "black",  [] ],
+    [ "btnDown:2.r",  "esp:33",    "lime",   [] ],
+
+    [ "btnLeft:1.r",  "esp:GND.2", "black",  [] ],
+    [ "btnLeft:2.r",  "esp:26",    "yellow", [] ],
+
+    [ "btnRight:1.r", "esp:GND.2", "black",  [] ],
+    [ "btnRight:2.r", "esp:27",    "orange", [] ],
+
+    [ "bz1:+",        "esp:25",    "purple", [] ],
+    [ "bz1:-",        "esp:GND.2", "black",  [] ],
+
     [ "esp:0", "bb1:29t.a", "", [ "$bb" ] ],
     [ "esp:2", "bb1:30t.a", "", [ "$bb" ] ],
     [ "esp:4", "bb1:28t.a", "", [ "$bb" ] ],

@@ -3,8 +3,8 @@
 
 #define BTN_UP      32
 #define BTN_DOWN    33
-#define BTN_RIGHT   35
-#define BTN_LEFT    34
+#define BTN_LEFT    26
+#define BTN_RIGHT   27
 
 // #define BUZZER_PIN  25
 

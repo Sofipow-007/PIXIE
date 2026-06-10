@@ -5,7 +5,7 @@
 
 #include "functions/standby.h"
 #include "functions/timer.h"
-#include "settings.h"
+#include "functions/settings.h"
 
 #include <Arduino.h>
 #include "functions/settings.h"
