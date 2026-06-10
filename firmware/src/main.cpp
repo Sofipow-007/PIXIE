@@ -1,13 +1,13 @@
 #include <Arduino.h>
 
-#include "modules/standby.h"
+#include "modules/menu.h"
 
-void setup() {
-
-  standbySetup();
+void setup()
+{
+    menuSetup();
 }
 
-void loop() {
-
-  standbyLoop();
+void loop()
+{
+    menuLoop();
 }

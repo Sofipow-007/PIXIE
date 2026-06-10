@@ -15,17 +15,41 @@
     {
       "type": "board-ssd1306",
       "id": "oled1",
-      "top": 22.34,
-      "left": 403.43,
+      "top": 108.74,
+      "left": 480.23,
       "attrs": { "i2cAddress": "0x3c" }
     },
     {
       "type": "wokwi-pushbutton",
-      "id": "btn1",
-      "top": 179,
-      "left": 211.2,
-      "attrs": { "color": "red", "xray": "" }
-    }
+      "id": "btnUp",
+      "top": 155,
+      "left": 295,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btnDown",
+      "top": 275,
+      "left": 295,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btnLeft",
+      "top": 215,
+      "left": 215,
+      "rotate": 90,
+      "attrs": { "color": "yellow" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btnRight",
+      "top": 215,
+      "left": 375,
+      "rotate": 90,
+      "attrs": { "color": "orange" }
+    },
+    { "type": "wokwi-buzzer", "id": "bz1", "top": 340, "left": 295, "attrs": { "volume": "0.1" } }
   ],
   "connections": [
     [ "esp:TX", "$serialMonitor:RX", "", [] ],
@@ -38,12 +62,16 @@
     [ "esp:3V3", "bb1:bp.12", "red", [ "h0" ] ],
     [ "esp:21", "oled1:SDA", "blue", [ "h19.2", "v-19.2", "h153.53" ] ],
     [ "esp:22", "oled1:SCL", "gold", [ "h0" ] ],
-    [ "btn1:1.l", "bb1:bn.36", "black", [ "h0" ] ],
-    [ "esp:34", "btn1:2.r", "violet", [ "h-28.65", "v192", "h134.4", "v57.4" ] ],
-    [ "btn1:1.l", "bb1:44b.h", "", [ "$bb" ] ],
-    [ "btn1:2.l", "bb1:46b.h", "", [ "$bb" ] ],
-    [ "btn1:1.r", "bb1:44t.c", "", [ "$bb" ] ],
-    [ "btn1:2.r", "bb1:46t.c", "", [ "$bb" ] ],
+    [ "btnUp:1.l", "bb1:bn.36", "black", [ "h0" ] ],
+    [ "esp:32", "btnUp:2.r", "green", [ "h-28.65", "v155", "h120", "v36" ] ],
+    [ "btnDown:1.l", "bb1:bn.40", "black", [ "h0" ] ],
+    [ "esp:33", "btnDown:2.r", "lime", [ "h-38", "v275", "h115", "v38" ] ],
+    [ "btnLeft:1.l", "bb1:bn.38", "black", [ "h0" ] ],
+    [ "esp:34", "btnLeft:2.r", "yellow", [ "h-45", "v215", "h55", "v54" ] ],
+    [ "btnRight:1.l", "bb1:bn.42", "black", [ "h0" ] ],
+    [ "esp:35", "btnRight:2.r", "orange", [ "h-55", "v215", "h215", "v52" ] ],
+    [ "bz1:+", "esp:25", "purple", [ "h-150", "v-120" ] ],
+    [ "bz1:-", "bb1:bn.44", "black", [ "h0" ] ],
     [ "esp:0", "bb1:29t.a", "", [ "$bb" ] ],
     [ "esp:2", "bb1:30t.a", "", [ "$bb" ] ],
     [ "esp:4", "bb1:28t.a", "", [ "$bb" ] ],
