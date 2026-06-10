@@ -1,0 +1,8 @@
+frame_0   2500ms
+frame_1   2500ms
+frame_0   2500ms
+frame_3   2500ms
+frame_0   2500ms
+frame_5   2500ms
+frame_0   2500ms
+frame_7   2500ms
