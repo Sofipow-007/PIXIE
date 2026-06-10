@@ -1,4 +1,6 @@
 // 'pixil-frame-0', 128x64px
+#include <pgmspace.h>
+
 static const unsigned char epd_bitmap_pixil_frame_0 [] PROGMEM = {
 	0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 
 	0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 
@@ -335,8 +337,8 @@ static const unsigned char epd_bitmap_pixil_frame_7 [] PROGMEM = {
 };
 
 // Array of all bitmaps for convenience. (Total bytes used to store images in PROGMEM = 5200)
-const int epd_bitmap_allArray_LEN = 5;
-const unsigned char* epd_bitmap_allArray[5] = {
+const int epd_bitmap_allArray_LEN = 8;
+static const unsigned char* epd_bitmap_allArray[8] = {
 	epd_bitmap_pixil_frame_0,
 	epd_bitmap_pixil_frame_1,
     epd_bitmap_pixil_frame_0,
