@@ -1,6 +1,9 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
+#define WIFI_SSID "Wokwi-GUEST"
+#define WIFI_PASS ""
+
 #define BTN_UP      32
 #define BTN_DOWN    33
 #define BTN_LEFT    26
