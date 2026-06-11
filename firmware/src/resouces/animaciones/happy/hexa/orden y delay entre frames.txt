@@ -1,10 +1,9 @@
 frame 0     200ms
 frame 1     25ms
-frame 3     50ms  (2)
 frame 3     100ms
 frame 4     100ms 
-frame 3     100ms (5)
-frame 4     100ms (6)
+frame 3     100ms
+frame 4     100ms
 frame 7     100ms 
-frame 4     100ms (8)
-frame 3     300ms (9)
+frame 4     100ms
+frame 3     300ms
