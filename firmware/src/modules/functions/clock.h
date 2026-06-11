@@ -1,5 +1,5 @@
-#ifndef CLOCK.H
-#define CLOCK.H
+#ifndef CLOCK_H
+#define CLOCK_H
 
 void clockSetup();
 void clockLoop();
