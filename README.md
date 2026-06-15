@@ -19,7 +19,7 @@ Reloj de escritorio inteligente construido con microcontrolador ESP32 y pantalla
 - Arduino IDE y VS Code con PlatformIO
 - Wokwi (simulación de hardware)
 
-#### Nota especial: Todo el código se encuentra en la rama 'development', por lo que todavía se encuentra en proceso
+#### Este proyecto se encuentra en etapa de desarrollo
 
 ## Integrantes
 
