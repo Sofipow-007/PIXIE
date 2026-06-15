@@ -28,8 +28,6 @@ Página Full-Stack:
 - Sequelize
 - MySQL
 
-#### Este proyecto se encuentra en etapa de desarrollo
-
 ## Integrantes
 
 - Sofia Power
