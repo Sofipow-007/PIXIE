@@ -1,6 +1,7 @@
-<div align="center">
+<!-- <div align="center">
   <img src="docs/images/pixie.png" width="600" alt="T">
-</div>
+</div> -->
+# PIXIE
 
 ## Descripción
 
