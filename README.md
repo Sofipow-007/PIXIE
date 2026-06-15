@@ -1,4 +1,6 @@
-[!PIXIE](./docs/images/pixie.png)
+<div align="center">
+  <img src="docs/images/pixie.png" width="600" alt="T">
+</div>
 
 ## Descripción
 
