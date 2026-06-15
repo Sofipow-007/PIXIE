@@ -1,6 +1,4 @@
-<div align="center">
-  <img src="docs/images/PIXIE-Logo.png" width="300" alt="T">
-</div>
+![Banner Logo](./docs/images/PIXIE-Banner.png)
 
 ## Descripción
 
