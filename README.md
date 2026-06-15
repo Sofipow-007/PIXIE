@@ -4,20 +4,29 @@
 
 Reloj de escritorio inteligente construido con microcontrolador ESP32 y pantalla OLED de menos de 3 cm. Tiene distintas funciones que complementan su uso gracias a un botón:
 
-1) Standby: Cuando no se usa, se muestra una cara animada con expresiones aleatorias
+1) Standby: Cuando no se usa, se muestra una cara animada con expresiones aleatorias.
 
-2) Reloj y fecha: Hora sincronizada por internet (NTP)
+2) Reloj y fecha: Hora sincronizada por internet (NTP).
 
-3) Clima en tiempo real: Temperatura y condición actual de tu ciudad. Se actualiza cada 5 minutos con una API gratuita
+3) Clima en tiempo real: Temperatura y condición actual de tu ciudad. Se actualiza cada 5 minutos con una API gratuita.
 
-4) Timer: Cronómetro regresivo configurable, termina con sonido del buzzer
+4) Timer: Cronómetro regresivo configurable, termina con sonido del buzzer.
 
-### Tecnologías y herramientas
+También está en desarrollo una página web para que el usuario logre adquirir a PIXIE como aplicación desde cualquier cuenta.
 
+## Tecnologías y herramientas
+
+Sistema embebido:
 - C++/C
 - Librerías Adafruit SSD1306, Adafruit GFX, ArduinoJson, etc.
 - Arduino IDE y VS Code con PlatformIO
 - Wokwi (simulación de hardware)
+
+Página Full-Stack:
+- JavaScript
+- React
+- Sequelize
+- MySQL
 
 #### Este proyecto se encuentra en etapa de desarrollo
 
