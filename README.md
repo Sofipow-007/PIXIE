@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="docs/images/PIXIE-Logo.png" width="600" alt="T">
+  <img src="docs/images/PIXIE-Logo.png" width="300" alt="T">
 </div>
 
 ## Descripción
