@@ -1,4 +1,4 @@
-#include "animation_spleepy.h"
+#include "animation_sleepy.h"
 
 #include <Arduino.h>
 #include <Wire.h>
