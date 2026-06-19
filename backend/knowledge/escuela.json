@@ -1,0 +1,13 @@
+{
+  "nombre": "Escuela Técnica",
+  "descripcion": "Escuela técnica con orientación en tecnología",
+  "especialidades": ["Programación", "Electrónica", "Redes"],
+  "turnos": ["Mañana", "Tarde"],
+  "datos": [
+    "La escuela forma técnicos en tres especialidades principales.",
+    "Los estudiantes realizan proyectos prácticos desde primer año.",
+    "El taller de electrónica cuenta con componentes y herramientas profesionales.",
+    "En programación se aprende desde lo básico hasta desarrollo web y aplicaciones.",
+    "La especialidad de redes cubre desde cableado estructurado hasta administración de servidores."
+  ]
+}

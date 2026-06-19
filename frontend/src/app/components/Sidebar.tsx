@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import {
   LayoutDashboard, Boxes, Settings, Power,
-  Heart, Monitor, Settings2,
+  MessageCircle, Heart, Monitor, Settings2,
 } from 'lucide-react';
 import { ModeSwitch } from './ModeSwitch';
 import { usePixieStore } from '../store';
@@ -24,6 +24,7 @@ const PHYSICAL_NAV = [
 ];
 
 const DIGITAL_NAV = [
+  { id: 'chat'      as DigitalTab, label: 'Chat',      icon: MessageCircle },
   { id: 'companion' as DigitalTab, label: 'Companion', icon: Heart },
   { id: 'desktop'   as DigitalTab, label: 'Desktop',   icon: Monitor },
   { id: 'settings'  as DigitalTab, label: 'Settings',  icon: Settings2 },
@@ -38,8 +39,8 @@ function SlidingIndicator({
   activeId: string;
 }) {
   const activeIndex  = nav.findIndex(n => n.id === activeId);
-  const ITEM_HEIGHT  = 38;   // px — matches button height below
-  const ITEM_GAP     = 2;    // px — gap between items
+  const ITEM_HEIGHT  = 38;
+  const ITEM_GAP     = 2;
 
   return (
     <div
@@ -75,7 +76,6 @@ export function Sidebar({
 
   return (
     <>
-      {/* ── Desktop sidebar ────────────────────────────────────────────────── */}
       <aside
         className="hidden md:flex flex-col"
         style={{
@@ -88,7 +88,6 @@ export function Sidebar({
           flexShrink:   0,
         }}
       >
-        {/* Logo */}
         <button
           onClick={() => setOnboardingComplete(false)}
           title="Ver pantalla de inicio"
@@ -122,7 +121,6 @@ export function Sidebar({
           </span>
         </button>
 
-        {/* Nav with sliding indicator */}
         <nav
           aria-label="Navegación principal"
           style={{
@@ -133,7 +131,6 @@ export function Sidebar({
             position:        'relative',
           }}
         >
-          {/* Indicator lives in padding area of nav, behind buttons */}
           <div
             style={{
               position:  'absolute',
@@ -146,7 +143,6 @@ export function Sidebar({
             <SlidingIndicator nav={nav} activeId={activeId} />
           </div>
 
-          {/* Buttons */}
           <div
             style={{
               display:       'flex',
@@ -197,7 +193,6 @@ export function Sidebar({
                   <Icon style={{ width: '1rem', height: '1rem', flexShrink: 0 }} />
                   {item.label}
 
-                  {/* Active dot */}
                   {active && (
                     <div
                       aria-hidden
@@ -217,7 +212,6 @@ export function Sidebar({
           </div>
         </nav>
 
-        {/* Mode switch */}
         <div
           style={{
             padding:    '0.875rem 0.625rem',
@@ -239,7 +233,6 @@ export function Sidebar({
         </div>
       </aside>
 
-      {/* ── Mobile bottom bar ──────────────────────────────────────────────── */}
       <nav
         className="md:hidden"
         aria-label="Navegación principal"
