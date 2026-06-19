@@ -9,7 +9,7 @@
 #define SCREEN_HEIGHT 64
 
 #include <utils/display.h>
-#include "../../resouces/animaciones/angry/hexa/animation_angry.h"
+#include "../../resouces/animaciones/PIXIE START/hexa/animation_start.h"
 
 
 struct Animation {
