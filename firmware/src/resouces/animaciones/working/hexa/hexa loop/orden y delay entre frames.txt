@@ -1,0 +1,4 @@
+frame 0     200ms
+frame 1     100ms
+frame 2     100ms
+frame 1     100ms
