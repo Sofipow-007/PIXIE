@@ -1,0 +1,23 @@
+frame 0   100ms
+frame 1   100ms
+frame 2   100ms
+frame 3   100ms
+frame 4   100ms
+frame 5   100ms
+frame 6   100ms
+frame 5   100ms (7)
+frame 8   100ms
+frame 5   100ms (9)
+frame 10  100ms
+frame 11  100ms
+frame 10  100ms (12)
+frame 5   100ms (13)
+frame 10  100ms (14)
+frame 15  100ms
+frame 10  100ms (16)
+frame 5   100ms (17)
+frame 18  75ms
+frame 19  75ms
+frame 20  75ms
+frame 21  75ms
+frame 22  125ms  (permanece hasta nueva accion)
