@@ -11,6 +11,7 @@ import { PowerView } from './views/physical/PowerView';
 import { CompanionView } from './views/digital/CompanionView';
 import { DesktopModeView } from './views/digital/DesktopModeView';
 import { DigitalSettingsView } from './views/digital/DigitalSettingsView';
+import { ChatView } from './views/digital/ChatView';
 import type { PhysicalTab, DigitalTab } from './types';
 
 const toastStyle = { background: '#0d0d0d', color: '#f5f5f5', border: '1px solid oklch(0.22 0.018 210)' };
@@ -35,7 +36,7 @@ function ViewTransition({ id, children }: { id: string; children: React.ReactNod
 export default function App() {
   const { onboardingComplete, pixieMode } = usePixieStore();
   const [physicalTab, setPhysicalTab] = useState<PhysicalTab>('dashboard');
-  const [digitalTab, setDigitalTab] = useState<DigitalTab>('companion');
+  const [digitalTab, setDigitalTab] = useState<DigitalTab>('chat');
 
   if (!onboardingComplete) {
     return (
@@ -71,6 +72,7 @@ export default function App() {
             </>
           ) : (
             <>
+              {digitalTab === 'chat' && <ChatView />}
               {digitalTab === 'companion' && <CompanionView />}
               {digitalTab === 'desktop' && <DesktopModeView />}
               {digitalTab === 'settings' && <DigitalSettingsView />}

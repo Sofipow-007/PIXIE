@@ -74,4 +74,4 @@ export interface PixieStore {
 }
 
 export type PhysicalTab = 'dashboard' | 'modules' | 'settings' | 'power';
-export type DigitalTab = 'companion' | 'desktop' | 'settings';
+export type DigitalTab = 'chat' | 'companion' | 'desktop' | 'settings';
