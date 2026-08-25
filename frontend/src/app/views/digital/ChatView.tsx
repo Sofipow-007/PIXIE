@@ -1,6 +1,27 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, Trash2, Mic } from 'lucide-react';
+import { Send, Trash2, Wifi, WifiOff, Loader2 } from 'lucide-react';
 import { useChat } from '../../hooks/useChat';
+
+function StatusBadge({ status }: { status: 'checking' | 'online' | 'offline' }) {
+  if (status === 'checking') return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: '0.375rem', fontSize: '0.75rem', color: 'oklch(0.55 0.015 210)' }}>
+      <Loader2 style={{ width: '0.75rem', height: '0.75rem', animation: 'spin 1s linear infinite' }} />
+      Conectando...
+    </div>
+  );
+  if (status === 'online') return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: '0.375rem', fontSize: '0.75rem', color: 'oklch(0.72 0.17 145)' }}>
+      <Wifi style={{ width: '0.75rem', height: '0.75rem' }} />
+      Pixie online
+    </div>
+  );
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: '0.375rem', fontSize: '0.75rem', color: 'oklch(0.65 0.20 25)' }}>
+      <WifiOff style={{ width: '0.75rem', height: '0.75rem' }} />
+      Backend offline
+    </div>
+  );
+}
 
 function ChatBubble({ role, content }: { role: 'user' | 'assistant'; content: string }) {
   const isUser = role === 'user';
@@ -53,7 +74,7 @@ function ThinkingIndicator() {
 }
 
 export function ChatView() {
-  const { messages, isThinking, send, clear } = useChat();
+  const { messages, isThinking, send, clear, backendStatus } = useChat();
   const [input, setInput] = useState('');
   const bottomRef = useRef<HTMLDivElement>(null);
 
@@ -91,9 +112,9 @@ export function ChatView() {
           <h1 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'oklch(0.73 0.155 192)', margin: 0 }}>
             Chat con Pixie
           </h1>
-          <p style={{ fontSize: '0.75rem', color: 'oklch(0.45 0.015 210)', margin: '0.25rem 0 0' }}>
-            Preguntame lo que quieras sobre la escuela
-          </p>
+          <div style={{ marginTop: '0.25rem' }}>
+            <StatusBadge status={backendStatus} />
+          </div>
         </div>
         {messages.length > 0 && (
           <button
@@ -116,6 +137,19 @@ export function ChatView() {
           </button>
         )}
       </div>
+
+      {/* Offline banner */}
+      {backendStatus === 'offline' && (
+        <div style={{
+          padding: '0.5rem 1.5rem',
+          background: 'oklch(0.65 0.20 25 / 0.1)',
+          borderBottom: '1px solid oklch(0.65 0.20 25 / 0.2)',
+          fontSize: '0.75rem',
+          color: 'oklch(0.65 0.20 25)',
+        }}>
+          El backend no está corriendo. Iniciá <code>npm run dev</code> en la carpeta <code>backend/</code> y asegurate de tener Ollama activo.
+        </div>
+      )}
 
       {/* Messages */}
       <div style={{ flex: 1, overflowY: 'auto', padding: '1.5rem' }}>
@@ -152,14 +186,14 @@ export function ChatView() {
           type="text"
           value={input}
           onChange={e => setInput(e.target.value)}
-          placeholder="Escribí tu mensaje..."
+          placeholder={backendStatus === 'offline' ? 'Backend offline...' : 'Escribí tu mensaje...'}
           disabled={isThinking}
           autoFocus
           style={{
             flex: 1,
             padding: '0.75rem 1rem',
             borderRadius: '0.75rem',
-            border: '1px solid oklch(0.22 0.018 210)',
+            border: `1px solid ${backendStatus === 'offline' ? 'oklch(0.65 0.20 25 / 0.3)' : 'oklch(0.22 0.018 210)'}`,
             background: 'oklch(0.12 0.006 210)',
             color: 'oklch(0.90 0.01 210)',
             fontSize: '0.9rem',
