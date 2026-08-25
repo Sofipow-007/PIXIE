@@ -2,10 +2,12 @@
 
 #include <WiFi.h>
 #include <time.h>
+#include <Preferences.h>
 
 #include "../../config.h"
 #include "../../utils/display.h"
 #include "../../utils/buttons.h"
+#include "../../utils/prefs_keys.h"
 
 bool wifiReady = false;
 
@@ -46,8 +48,18 @@ void clockSetup()
 
     if (wifiReady)
     {
+        // La zona horaria se configura en Ajustes y se
+        // guarda en NVS (por defecto UTC-3 si nunca se toco).
+
+        Preferences prefs;
+        prefs.begin(PREFS_NAMESPACE, true);
+
+        int tzOffsetHours = prefs.getInt(PREFS_KEY_TZ_OFFSET, -3);
+
+        prefs.end();
+
         configTime(
-            -3 * 3600,
+            tzOffsetHours * 3600,
             0,
             "pool.ntp.org"
         );
@@ -114,11 +126,10 @@ void clockLoop()
 {
     drawClock();
 
-    if (btnLeftPressed())
-    {
-        // TODO:
-        // volver al menu
-    }
+    // El volver al menu con IZQUIERDA lo maneja menu.cpp
+    // (CLOCK_STATE). No leer btnLeftPressed() aca: al ser
+    // deteccion por flanco, consumiria la pulsacion antes
+    // de que menu.cpp la vea y el boton dejaria de funcionar.
 
     delay(100);
 }

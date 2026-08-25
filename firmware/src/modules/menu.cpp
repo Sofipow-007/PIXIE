@@ -2,11 +2,13 @@
 
 #include "../utils/display.h"
 #include "../utils/buttons.h"
+#include "../utils/list_menu.h"
 
 #include "functions/standby.h"
 #include "functions/timer.h"
 #include "functions/settings.h"
 #include "functions/clock.h"
+#include "functions/weather.h"
 
 #include <Arduino.h>
 
@@ -18,6 +20,7 @@ enum AppState
     MENU_STATE,
     TIMER_STATE,
     SETTINGS_STATE,
+    WEATHER_STATE,
     CLOCK_STATE
 };
 
@@ -31,10 +34,11 @@ const char *menuItems[] = {
     "Clock",
     "Timer",
     "Ajustes",
+    "Clima",
     "Volver"
 };
 
-const int MENU_ITEMS_COUNT = 4;
+const int MENU_ITEMS_COUNT = 5;
 
 bool menuNeedsRedraw = true;
 
@@ -42,27 +46,12 @@ bool menuNeedsRedraw = true;
 
 void drawMenu()
 {
-    display.clearDisplay();
-
-    display.setTextSize(1);
-    display.setTextColor(SSD1306_WHITE);
-
-    display.setCursor(0, 0);
-    display.print("--- PIXIE ---");
-
-    for (int i = 0; i < MENU_ITEMS_COUNT; i++)
-    {
-        display.setCursor(0, 12 + (i * 13));
-
-        if (i == selectedOption)
-            display.print("> ");
-        else
-            display.print("  ");
-
-        display.print(menuItems[i]);
-    }
-
-    display.display();
+    drawScrollingList(
+        "--- PIXIE ---",
+        menuItems,
+        MENU_ITEMS_COUNT,
+        selectedOption
+    );
 }
 
 // ── Entrar a opción seleccionada ──────────────────────
@@ -90,11 +79,18 @@ void enterSelectedOption()
         break;
 
     case 3:
+        Serial.println("[MENU] Entrando a Clima");
+        weatherSetup();
+        currentState = WEATHER_STATE;
+        break;
+
+    case 4:
         Serial.println("[MENU] Volviendo a Standby");
         standbySetup();
         currentState = STANDBY_STATE;
         break;
     }
+    
 }
 
 // ── Setup ─────────────────────────────────────────────
@@ -218,6 +214,19 @@ void menuLoop()
         if (btnLeftPressed())
         {
             Serial.println("[BTN] LEFT ajustes -> menu");
+
+            currentState = MENU_STATE;
+            menuNeedsRedraw = true;
+        }
+
+        break;
+    
+    case WEATHER_STATE:
+        weatherLoop();
+
+        if (btnLeftPressed())
+        {
+            Serial.println("[BTN] LEFT clock -> menu");
 
             currentState = MENU_STATE;
             menuNeedsRedraw = true;

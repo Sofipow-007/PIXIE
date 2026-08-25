@@ -204,7 +204,9 @@ void timerLoop()
         }
 
         // IZQUIERDA
-        // TODO: volver al menu
+        // El volver al menu lo maneja menu.cpp (TIMER_STATE).
+        // No leer btnLeftPressed() aca: consumiria el flanco
+        // antes de que menu.cpp lo detecte.
     }
 
     // ----------------------------------
@@ -241,7 +243,9 @@ void timerLoop()
         }
 
         // IZQUIERDA
-        // TODO: volver al menu
+        // El volver al menu lo maneja menu.cpp (TIMER_STATE).
+        // No leer btnLeftPressed() aca: consumiria el flanco
+        // antes de que menu.cpp lo detecte.
     }
 
     // ----------------------------------
@@ -261,7 +265,9 @@ void timerLoop()
         }
 
         // IZQUIERDA
-        // TODO: volver al menu
+        // El volver al menu lo maneja menu.cpp (TIMER_STATE).
+        // No leer btnLeftPressed() aca: consumiria el flanco
+        // antes de que menu.cpp lo detecte.
     }
 
     // ----------------------------------
