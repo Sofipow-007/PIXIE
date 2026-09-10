@@ -14,6 +14,12 @@ Reloj de escritorio inteligente construido con microcontrolador ESP32 y pantalla
 
 También está en desarrollo una página web para que el usuario logre adquirir a PIXIE como aplicación desde cualquier cuenta.
 
+> **Proyecto en transición:** el equipo está redefiniendo a PIXIE como aplicación de escritorio
+> instalable con capacidades de asistente/cowork (memoria persistente, ejecución de acciones en
+> el sistema) y postulando al Youth Climate Action Fund. Ver
+> [`docs/PIXIE-2.0-Vision-y-Estrategia.md`](./docs/PIXIE-2.0-Vision-y-Estrategia.md) para la
+> visión, la arquitectura propuesta y el enfoque de impacto climático.
+
 ## Tecnologías y herramientas
 
 Sistema embebido:
