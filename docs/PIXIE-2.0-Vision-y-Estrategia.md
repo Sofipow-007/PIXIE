@@ -4,6 +4,12 @@
 > a **producto propio, con impacto climático verificable y una arquitectura que lo sostenga**,
 > en el marco de la postulación a *Jóvenes por la Acción Climática* (Youth Climate Action Fund —
 > Bloomberg Philanthropies / GCABA).
+>
+> **Alcance de esta etapa: 100% digital.** El desarrollo del dispositivo embebido (ESP32/OLED)
+> queda pausado por decisión del equipo. Este documento y el roadmap que propone están
+> enfocados exclusivamente en la aplicación de escritorio y el asistente. Cuando el hardware se
+> retome, se integrará como un frontend adicional del mismo backend — pero no es parte de esta
+> fase ni condiciona nada de lo que sigue.
 
 ---
 
@@ -31,27 +37,26 @@ Este documento resuelve ambas cosas: **qué es PIXIE ahora**, **cómo se constru
 
 ## 1. Nueva visión: qué es PIXIE ahora
 
-PIXIE deja de ser "un reloj de escritorio con un chatbot al lado" y pasa a ser:
+PIXIE deja de ser "un chatbot que responde preguntas" y pasa a ser:
 
-> **Un asistente de IA local, instalable, que vive en tu computadora y en tu escritorio físico,
-> con memoria persistente y capacidad real de actuar (no solo de charlar) — y que existe, en
-> primer lugar, para bajar el consumo energético y los hábitos insostenibles de quien lo usa.**
+> **Un asistente de IA local, instalable, que vive en tu computadora, con memoria persistente y
+> capacidad real de actuar (no solo de charlar) — y que existe, en primer lugar, para bajar el
+> consumo energético y los hábitos insostenibles de quien lo usa, sin depender de un datacenter
+> en la nube.**
 
-Dos capas, un mismo producto:
+Es un único producto digital: **PIXIE Core**, la aplicación de escritorio. No una página web a
+la que el usuario entra, sino algo que se **descarga, se instala y corre en segundo plano**,
+con:
 
-- **PIXIE Device** (lo que ya existe): el objeto físico ESP32 + OLED, cara animada, reloj,
-  clima, timer. Se mantiene — es la identidad de marca y el diferencial tangible.
-- **PIXIE Core** (lo nuevo): ya no es "una página web". Es una **aplicación de escritorio
-  instalable** (Windows/macOS/Linux) que corre 100% local, con:
-  - Memoria de largo plazo real (no se olvida de una sesión a otra).
-  - Capacidad de ejecutar acciones en el sistema (archivos, comandos, automatizaciones) con
-    permisos configurables — "cowork inteligente", no un chat pasivo.
-  - Métricas de impacto ambiental propio (ver §4) que alimentan la rendición de cuentas del
-    fondo.
+- Memoria de largo plazo real (no se olvida de una sesión a otra).
+- Capacidad de ejecutar acciones en el sistema (archivos, comandos, automatizaciones) con
+  permisos configurables — "cowork inteligente", no un chat pasivo.
+- Métricas de impacto ambiental propio (ver §4) que alimentan la rendición de cuentas del
+  fondo.
 
 La justificación técnico-formativa que ya escribimos (ODS 4, integración de Programación /
-Electrónica / Redes) **se mantiene intacta** — no se pierde nada de eso, se le suma un propósito
-externo verificable, que es lo que le faltaba.
+Electrónica / Redes) **se mantiene intacta como antecedente** — no se pierde nada de eso, se le
+suma un propósito externo verificable, que es lo que le faltaba.
 
 ---
 
@@ -59,7 +64,7 @@ externo verificable, que es lo que le faltaba.
 
 Elegimos anclar la propuesta en **dos ejes temáticos combinados** (la convocatoria pide
 alinearse con al menos uno — cubrir dos con honestidad suma en el criterio "Innovación,
-continuidad y potencial de replicabilidad"):
+continuidad y potencial de replicabilidad"), los dos resueltos íntegramente del lado digital:
 
 ### Eje principal — 9.4 Energía y Movilidad Sostenible
 **Problemática concreta:** el consumo de energía "fantasma" y los malos hábitos digitales
@@ -73,29 +78,36 @@ el día* puede intervenir sin fricción.
   consulta a un datacenter — esto no es un detalle técnico, es el argumento ambiental central:
   *cada charla con PIXIE no calienta un servidor en otro continente.*
 - El módulo nuevo **"Hábitos"** mide y visibiliza consumo estimado (tiempo de pantalla, standby,
-  uso del PC) y sugiere/automatiza acciones de ahorro (suspender, apagar periféricos, recordar
-  apagar luces vía integración con el dispositivo físico).
+  uso del PC) y sugiere/automatiza acciones de ahorro (suspender procesos, apagar el monitor,
+  recordatorios de corte de uso).
 - Indicador cuantificable para el fondo (obligatorio, §8.2.g): **kWh estimados ahorrados por
   usuario/semana** y **cantidad de "nudges" de ahorro energético aceptados**.
 
 ### Eje secundario — 9.1 Economía Circular y Gestión de Residuos
-**Problemática concreta:** residuo electrónico y sub-uso de componentes en el aprendizaje
-técnico (proyectos de feria que se arman y se tiran). PIXIE Device ya se construye con
-componentes reutilizables/econonómicos (ESP32 + OLED, low-cost); formalizamos esto como una
-**guía abierta de armado con componentes reciclados/reacondicionados**, pensada para que otras
-escuelas repliquen el dispositivo sin comprar todo nuevo — esto es directamente el criterio de
-**"continuidad, escala o replicabilidad"** que puntúa 10/100 en la evaluación.
+**Problemática concreta, versión digital:** el recambio prematuro de equipos. Muchas
+herramientas de IA modernas exigen hardware potente o conexión constante a la nube, lo que
+empuja a reemplazar computadoras (de estudiantes, de laboratorios escolares) que todavía
+funcionan bien para todo lo demás — generando residuo electrónico evitable.
+
+**Lo que hace PIXIE al respecto:**
+- Al elegir un shell liviano (Tauri, ver §3.1) y un modelo local optimizado, PIXIE está pensado
+  para **correr bien en PCs de gama baja o de varios años**, sin exigir upgrade de hardware.
+- Esto se documenta y comunica activamente: una **guía de requisitos mínimos reales**, probada
+  en equipos viejos de laboratorio escolar, como argumento de "extender la vida útil del
+  hardware existente" — coherente con el criterio de **replicabilidad** que puntúa en la
+  evaluación (10/100).
 
 **Comunidad destinataria (§8.2.d):** estudiantes y docentes de escuelas técnicas de la Ciudad
 (inicialmente la propia escuela y 1–2 escuelas aliadas), con foco en quienes tienen menos acceso
-a herramientas de IA de pago o a infraestructura cloud — coherente con el principio transversal
-de Inclusión y Equidad (§3.1).
+a herramientas de IA de pago o a hardware de última generación — coherente con el principio
+transversal de Inclusión y Equidad (§3.1).
 
 **Resultados verificables propuestos (output/outcome, §8.2.g):**
-- *Output:* N dispositivos PIXIE armados y entregados/instalados en aulas o casas de estudiantes
-  (meta numérica a definir con el equipo, ej. 15–25 unidades dado el presupuesto).
+- *Output:* N instalaciones activas de PIXIE en PCs de estudiantes/laboratorios escolares
+  (meta numérica a definir con el equipo, ej. 30–50 instalaciones dado el presupuesto).
 - *Outcome:* % de reducción de consumo energético auto-reportado/medido en usuarios activos
-  durante 8–10 semanas, y N° de escuelas/personas que replican la guía de armado.
+  durante 8–10 semanas, y N° de equipos "viejos" (ej. +4 años) donde PIXIE corre sin
+  degradación.
 
 > Esto es una propuesta inicial para que el equipo la discuta y ajuste — no hace falta cerrarla
 > hoy, pero **sí antes de completar el formulario de postulación**, porque todo el resto del
@@ -118,10 +130,12 @@ instala**, corre en segundo plano, y tiene acceso real al sistema. Esto cambia e
 | RAM en reposo | Alta (varios Chromiums corriendo) | Baja |
 | Backend | Node.js | Rust (con posibilidad de "sidecars" en Node/Python) |
 | Consumo energético | Notablemente mayor | Notablemente menor |
+| Corre bien en PCs viejas | No siempre | Sí, es el caso de uso que mejor cubre |
 
-Dado que uno de los argumentos centrales de la postulación es "PIXIE consume menos energía que
-la IA en la nube", instalar una app que en sí misma es un devorador de RAM/CPU es contradictorio
-con el propio mensaje. Tauri no es solo una elección técnica, es coherencia de marca.
+Dado que dos de los argumentos centrales de la postulación son "PIXIE consume menos energía que
+la IA en la nube" y "PIXIE extiende la vida útil de equipos existentes", instalar una app que en
+sí misma es un devorador de RAM/CPU sería contradictorio con el propio mensaje. Tauri no es solo
+una elección técnica, es coherencia de marca y de impacto.
 
 *(El equipo ya sabe React — se conserva 100% el frontend actual, solo cambia el shell nativo
 que lo empaqueta e instala.)*
@@ -146,7 +160,7 @@ Usuario/equipo pide algo en lenguaje natural
  │  - archivos (leer/escribir en carpetas   │
  │    autorizadas)                          │
  │  - tareas/recordatorios                  │
- │  - bridge al dispositivo físico          │
+ │  - métricas de hábitos/consumo           │
  └─────────────────────────────────────────┘
         │
         ▼
@@ -182,26 +196,27 @@ uso día a día. Para que PIXIE "recuerde" de verdad:
 
 | Capa | Elección | Motivo |
 |---|---|---|
-| App instalable | **Tauri** (Rust + WebView) | liviano, coherente con el mensaje ambiental |
+| App instalable | **Tauri** (Rust + WebView) | liviano, corre en PCs viejas, coherente con el mensaje ambiental |
 | Frontend | **React + TypeScript** | ya lo domina el equipo, se reusa |
 | Orquestación del agente | **Node.js/TypeScript** (sidecar) | el equipo ya conoce Node/Express |
 | Modelo de IA | **Ollama local**, evaluar modelo con soporte de *tool calling* (Qwen2.5, Llama 3.1/3.2, o Gemma 3 si su versión lo soporta) | tiene que poder invocar herramientas, no solo generar texto |
 | Memoria vectorial | **SQLite + sqlite-vec** o **LanceDB** embebido | cero infraestructura externa |
-| Bridge con el dispositivo físico | **Serial/WebSerial o BLE**, protocolo JSON simple | ya está identificado como línea de trabajo en curso — esto lo resuelve |
-| Firmware ESP32 | **se mantiene en C++/Arduino** | no hay motivo para reescribirlo |
+| Firmware ESP32 / dispositivo físico | **pausado** | fuera de alcance de esta etapa (ver nota al inicio del documento) |
 
 ### 3.5 Roadmap sugerido (fases, no fechas rígidas)
 
 1. **Fase 0 — Definir el problema climático y armar el formulario de postulación** (antes que
    nada; el resto depende de esto).
 2. **Fase 1 — Migrar el frontend actual a Tauri.** Sin agente todavía: solo validar que la app
-   instalable funciona igual que la web.
+   instalable funciona igual que la web, y que corre bien en hardware modesto (esto valida el
+   argumento del eje secundario).
 3. **Fase 2 — Bucle de herramientas básico:** lectura/escritura de archivos y recordatorios/tareas
    (lo que el propio documento de PIXIE ya listaba como "en desarrollo"), con permisos.
 4. **Fase 3 — Bash controlado + memoria episódica.**
-5. **Fase 4 — Bridge físico↔digital** (sincronización real dispositivo ESP32 ↔ app).
-6. **Fase 5 — Módulo "Hábitos"** (el que sostiene el argumento climático) con métricas
+5. **Fase 4 — Módulo "Hábitos"** (el que sostiene el argumento climático) con métricas
    exportables para la rendición del fondo.
+6. **Fase 5 (más adelante, fuera de esta etapa) — Retomar el dispositivo físico** y conectarlo
+   como un frontend más del mismo backend, cuando el equipo decida reactivarlo.
 
 ---
 
@@ -212,31 +227,31 @@ institucional. Eso implica decisiones de marca reales.
 
 ### 4.1 Propuesta de valor (una frase)
 
-> **PIXIE es la IA que vive en tu escritorio — no en un datacenter — y que te ayuda a hacer más
-> con menos energía.**
+> **PIXIE es la IA que vive en tu computadora — no en un datacenter — y que te ayuda a hacer más
+> con menos energía, sin pedirte hardware nuevo.**
 
 ### 4.2 Eslóganes (para testear, no elegir uno solo todavía)
 
 - *"Pixie corre en tu PC, no en la nube que calienta el planeta."*
 - *"Menos nube, más raíz."*
-- *"Tu compañera de escritorio, con memoria y con conciencia."*
+- *"Tu asistente, con memoria y con conciencia."*
 - *"IA local. Impacto real."*
 - *"Pixie decide con vos, no por vos."* (para el ángulo "cowork inteligente", diferenciando de
   un bot que actúa sin supervisión)
-- *"Hecha por estudiantes, pensada para durar."* (ángulo economía circular / continuidad)
+- *"La misma PC de siempre, ahora con IA de verdad."* (ángulo economía circular / sin upgrade)
 
 ### 4.3 Tácticas concretas
 
 - **Narrativa de origen:** "de proyecto de escuela técnica a producto propio con apoyo de
   Bloomberg Philanthropies" — es una historia real y verificable, mejor que cualquier campaña
-  inventada. Usarla en redes (Instagram/TikTok con dev-logs cortos del armado y del código) y en
-  la propia postulación.
-- **El argumento ambiental es el argumento de producto**, no un afiche aparte: cada feature nueva
-  ("Hábitos", memoria local, IA sin nube) se comunica primero por lo que ahorra, después por lo
-  técnico.
-- **Abrir el repo y la guía de armado** (ya es requisito de facto para el criterio de
-  replicabilidad) — convierte el código en marketing: cuantas más escuelas repliquen PIXIE, más
-  fuerte el caso de impacto real para el informe final del fondo.
+  inventada. Usarla en redes (Instagram/TikTok con dev-logs cortos del proceso de desarrollo) y
+  en la propia postulación.
+- **El argumento ambiental es el argumento de producto**, no un afiche aparte: cada feature
+  nueva ("Hábitos", memoria local, IA sin nube, requisitos mínimos bajos) se comunica primero
+  por lo que ahorra, después por lo técnico.
+- **Abrir el repo y documentar los requisitos mínimos reales** (probados en hardware viejo) —
+  convierte el código en marketing: cuantas más personas instalen PIXIE en equipos que "ya no
+  daban para más", más fuerte el caso de impacto real para el informe final del fondo.
 - **Organización Patrocinadora:** la convocatoria exige una (persona jurídica que administre los
   fondos, §11.2) — buscar una ONG o entidad pública ligada a tecnología/educación/ambiente en
   CABA; el Gobierno de la Ciudad no puede cumplir ese rol. Esto es una tarea concreta a resolver
@@ -257,8 +272,8 @@ institucional. Eso implica decisiones de marca reales.
 - [ ] Si hay integrantes menores de edad, preparar el Anexo de autorización (Bases, punto 6.2).
 - [ ] Decidir el modelo local con soporte de tool-calling (probar Qwen2.5 / Llama 3.2 contra
       Gemma 3 actual).
-- [ ] Prototipo mínimo de Tauri con el frontend actual (Fase 1 del roadmap) para tener algo
-      demostrable en la postulación, más allá de la promesa.
+- [ ] Prototipo mínimo de Tauri con el frontend actual (Fase 1 del roadmap), probado en al menos
+      una PC de gama baja, para tener algo demostrable en la postulación más allá de la promesa.
 
 ---
 
