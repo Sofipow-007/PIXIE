@@ -19,7 +19,10 @@ También está en desarrollo una página web para que el usuario logre adquirir 
 > instalable con capacidades de asistente/cowork (memoria persistente, ejecución de acciones en
 > el sistema), en el marco de la postulación al Youth Climate Action Fund. Ver
 > [`docs/PIXIE-2.0-Vision-y-Estrategia.md`](./docs/PIXIE-2.0-Vision-y-Estrategia.md) para la
-> visión, la arquitectura propuesta y el enfoque de impacto climático.
+> visión, la arquitectura propuesta y el enfoque de impacto climático, y
+> [`docs/PIXIE-2.0-Alcance-MVP.md`](./docs/PIXIE-2.0-Alcance-MVP.md) para cerrar el alcance del
+> primer MVP en equipo. El esqueleto de la nueva app (Tauri + React) ya está en
+> [`app/`](./app).
 
 ## Tecnologías y herramientas
 
