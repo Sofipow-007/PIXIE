@@ -113,6 +113,77 @@ transversal de Inclusión y Equidad (§3.1).
 > hoy, pero **sí antes de completar el formulario de postulación**, porque todo el resto del
 > formulario (presupuesto, cronograma, indicadores) depende de esta definición.
 
+### 2.3 Cumplimiento de requisitos, punto por punto
+
+No alcanza con "tener un buen proyecto" — las Bases evalúan requisitos puntuales y asignan un
+puntaje explícito a cada uno (§10.3, 100 puntos totales). Esta tabla existe para que, al llenar
+el formulario, cada respuesta apunte directo a lo que se pondera.
+
+| Requisito (Bases) | Cómo lo cumple PIXIE | Pendiente del equipo |
+|---|---|---|
+| §7.1 Equipo de 2+ jóvenes de 15-24 años, estudiantes en CABA | El equipo actual (4 integrantes) ya cumple la forma | Confirmar que las edades de todos encuadran en 15-24 |
+| §8.1 Aborda problemática ambiental concreta | Sí — hábitos de consumo energético invisibles + recambio prematuro de hardware (§2) | Cerrar la redacción final con el equipo |
+| §8.1 Diseñado y liderado por jóvenes | Sí, sin intervención adulta en el diseño técnico | — |
+| §8.1 Se desarrolla en CABA con impacto en la comunidad | Escuela propia + escuelas aliadas en CABA | Confirmar 1-2 escuelas aliadas concretas |
+| §8.1 Alineado a un eje temático | Cubre dos (9.4 principal, 9.1 secundario) | — |
+| §8.1 Viable técnica/operativamente en el plazo | Stack liviano (Tauri), sin hardware que fabricar ni cadena de suministro — factible en el cronograma del fondo (implementación hasta abril 2027, primeros resultados antes del 11/dic/2026) | Definir alcance del MVP para esa primera fecha |
+| §8.1 Resultados concretos y verificables | Métricas cuantificables por diseño: kWh estimados, N° de instalaciones, N° de nudges aceptados | — |
+| §8.1 Continuidad, escala o replicabilidad | Código abierto + corre en hardware viejo = cero barrera de entrada para que otra escuela lo adopte | — |
+| §8.2 (a-j) Contenido mínimo de la propuesta | Problemática, solución, equipo, comunidad destinataria, objetivos e indicadores ya esbozados en §1-2 de este documento | Falta: cronograma detallado, presupuesto línea por línea, responsables por actividad |
+| §10.3 Liderazgo juvenil efectivo (25 pts, el criterio de mayor peso) | El proyecto nace, se diseña y se ejecuta íntegramente por el equipo — remarcar esto explícitamente en el formulario, no darlo por sobreentendido | — |
+| §10.3 Alineación con ejes (20 pts) | Dos ejes cubiertos con mecanismos concretos, no solo mencionados | — |
+| §10.3 Impacto territorial e inclusión (20 pts) | Foco en estudiantes con menos acceso a hardware/IA de pago (§3.1 Bases) | Sumar, si es posible, una escuela de otro barrio para reforzar diversidad territorial (criterio de priorización, §10.4) |
+| §10.3 Viabilidad (15 pts) | Roadmap por fases, sin dependencias externas costosas (todo corre local) | — |
+| §10.3 Innovación/continuidad/replicabilidad (10 pts) | Ángulo "IA local + hardware viejo" es poco común frente a otras propuestas — vale la pena destacarlo como diferencial | — |
+| §10.3 Calidad de indicadores (10 pts) | Definir metas numéricas concretas, no solo describir el mecanismo | Cerrar los números exactos (§2) |
+| §11.2 Organización Patrocinadora obligatoria | — | Tarea abierta: no puede ser el GCABA ni una entidad político-partidaria; puede compartirse con hasta 2 proyectos más |
+| §6.2 Autorización de menores (si aplica) | — | Confirmar si algún integrante es menor de edad y preparar el Anexo |
+
+### 2.4 Impacto ambiental: activo vs. pasivo
+
+La convocatoria pide resultados verificables, y un asistente que "por dentro es más eficiente"
+no alcanza si nadie lo puede medir ni ver. Por eso conviene diseñar el impacto en dos capas que
+se refuercen entre sí: una que ocurre **sola, por cómo está construido PIXIE**, y otra que
+depende de que el usuario o el propio agente **hagan algo**.
+
+**Pasivo — ocurre por arquitectura, sin que nadie tenga que acordarse de nada:**
+- *Inferencia 100% local:* cada consulta a PIXIE no viaja a un datacenter. No requiere que el
+  usuario elija "modo eco" — es la única forma en la que PIXIE funciona.
+- *Footprint liviano (Tauri):* menos RAM/CPU en reposo que un equivalente en Electron → menos
+  consumo eléctrico del propio programa mientras está abierto, todo el tiempo, sin acción del
+  usuario.
+- *Corre en hardware viejo:* el usuario simplemente sigue usando la PC que ya tenía. El impacto
+  (una compra evitada, un equipo que no termina en la basura electrónica) es real aunque nadie
+  lo note en el momento.
+- *Efecto multiplicador del código abierto:* una vez publicado, cada instalación de otra persona
+  suma al impacto agregado sin que el equipo tenga que hacer nada por esa instalación puntual.
+
+**Activo — requiere una acción, del usuario o del agente, y por eso es lo que se puede mostrar
+y medir directamente:**
+- *Módulo "Hábitos":* mide consumo estimado y sugiere acciones concretas (suspender procesos,
+  apagar el monitor, cortar una sesión larga) — el usuario acepta o descarta cada sugerencia,
+  y eso mismo es el dato (N° de nudges aceptados).
+- *Automatizaciones que el propio agente ejecuta* (con permiso previo): pausar procesos que
+  consumen energía sin uso real, dentro de los límites de seguridad de §3.2 — acá "cowork
+  inteligente" y "acción ambiental" son literalmente la misma función.
+- *Contenido y recordatorios educativos vía RAG:* tips de sostenibilidad, información sobre
+  puntos de reciclaje o reducción de residuos cercanos — PIXIE no solo ahorra energía, también
+  empuja activamente conocimiento sobre los otros ejes de la convocatoria (9.1, 9.3), aunque no
+  sean el eje principal de la propuesta.
+- *Reportes exportables de impacto:* un resumen (kWh, horas, nudges aceptados) que el usuario
+  puede ver y compartir — esto es, a la vez, el insumo para el informe final obligatorio del
+  fondo (§11.3.2) y contenido de comunicación/marca (§4).
+- *Réplica activa:* si el equipo da una charla o taller corto en otra escuela para que instalen
+  PIXIE, eso no es solo difusión — es directamente el mecanismo que hace crecer el output
+  medible ("N° de instalaciones"), y también encaja con las "instancias de acompañamiento" que
+  el propio Programa ofrece (§6.1 y §11.3.1 de las Bases).
+
+La capa pasiva es la que sostiene el argumento ambiental de fondo (es estructural, no depende de
+que nadie se acuerde de usarla bien). La capa activa es la que genera los números que van en el
+informe final y en cualquier publicación de resultados. Conviene que el formulario mencione
+ambas explícitamente, porque juntas responden mejor al criterio de "resultados concretos y
+verificables" que cualquiera de las dos por separado.
+
 ---
 
 ## 3. Nueva arquitectura técnica
